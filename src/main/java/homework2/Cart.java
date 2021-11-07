@@ -21,11 +21,11 @@ public class Cart {
         this.productList = productList;
     }
 
-    public void addProductById(long id) {
+    public void addProductById(Long id) {
         productList.add(orderService.createOrderFromProduct(id));
     }
 
-    public void removeProductById(long id) {
+    public void removeProductById(Long id) {
         productList.remove(orderService.createOrderFromProduct(id));
     }
 
