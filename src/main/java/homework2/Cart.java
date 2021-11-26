@@ -26,7 +26,7 @@ public class Cart {
     }
 
     public void removeProductById(Long id) {
-        productList.remove(orderService.createOrderFromProduct(id));
+        productList.removeIf(p -> p.getId().equals(id));
     }
 
     @Override
