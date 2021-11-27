@@ -1,4 +1,6 @@
-package homework6;
+package homework6.repository.customer;
+
+import homework6.repository.order.Order;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,6 +36,14 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     public Customer() {
     }
 
@@ -42,7 +52,7 @@ public class Customer {
         return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", orders=" + orders +
+                ", ordersCount=" + orders.size() +
                 '}';
     }
 }

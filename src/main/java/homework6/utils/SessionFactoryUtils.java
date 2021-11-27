@@ -1,4 +1,4 @@
-package homework6;
+package homework6.utils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +15,7 @@ public class SessionFactoryUtils {
     @PostConstruct
     public void init() {
         factory = new Configuration()
-                .configure("hibernate.cgf.xml")
+                .configure("cfg.xml")
                 .buildSessionFactory();
     }
 
