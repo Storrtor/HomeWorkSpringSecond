@@ -39,9 +39,7 @@ public class ProductDaoImp implements ProductDao {
             Customer customer = session.get(Customer.class, customerId);
             List<Order> orders = customer.getOrders();
             List<Product> products = new ArrayList<>();
-            for (Order o : orders) {
-                products.add(o.getProduct());
-            }
+            orders.stream().map(o -> o.getProduct()).distinct().forEach(o -> products.add(o));
             System.out.println(products);
             session.getTransaction().commit();
             return products;

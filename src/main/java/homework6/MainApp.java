@@ -21,8 +21,11 @@ public class MainApp {
         ProductService productService = context.getBean(ProductService.class);
 
         try {
-            customerService.findCustomerByProductId(1L);
+
             orderService.getOrders();
+//            customerService.getAllCustomerByProductId(2L);
+//            productService.findProductsByCustomerId(1L);
+
 
 
         } catch (Exception e) {

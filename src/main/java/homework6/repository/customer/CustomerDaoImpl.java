@@ -48,9 +48,7 @@ public class CustomerDaoImpl implements CustomerDao {
             Product product = session.get(Product.class, productId);
             List<Order> orders = product.getOrders();
             List<Customer> customers = new ArrayList<>();
-            for (Order o : orders) {
-                customers.add(o.getCustomer());
-            }
+            orders.stream().map(o -> o.getCustomer()).distinct().forEach(o -> customers.add(o));
             System.out.println(customers);
             session.getTransaction().commit();
             return customers;

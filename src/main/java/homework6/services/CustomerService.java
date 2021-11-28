@@ -17,10 +17,6 @@ public class CustomerService {
         this.customerDao = customerDao;
     }
 
-    public List<Customer> findCustomerByProductId(Long productId) {
-        return customerDao.getCustomers();
-    }
-
     public void addNewCustomer(String name) {
         customerDao.addNewCustomer(name);
     }
