@@ -1,7 +1,8 @@
 package homework6.repository.product;
 
-import homework6.repository.customer.Customer;
-import homework6.repository.order.Order;
+import homework6.model.Customer;
+import homework6.model.Order;
+import homework6.model.Product;
 import homework6.utils.SessionFactoryUtils;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,17 @@ public class ProductDaoImp implements ProductDao {
             return products;
         }
     }
+
+    @Override
+    public void changeCostOfProduct(Long productId, Integer newCost) {
+        try (Session session = factoryUtils.getSession()){
+            session.beginTransaction();
+            Product product = session.get(Product.class, productId);
+            product.setCost(newCost);
+            session.saveOrUpdate(product);
+            session.getTransaction().commit();
+        }
+    }
+
+
 }

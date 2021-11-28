@@ -1,7 +1,4 @@
-package homework6.repository.order;
-
-import homework6.repository.product.Product;
-import homework6.repository.customer.Customer;
+package homework6.model;
 
 import javax.persistence.*;
 
@@ -21,6 +18,16 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    private Integer product_cost;
+
+    public Integer getProduct_cost() {
+        return product_cost;
+    }
+
+    public void setProduct_cost(Integer product_cost) {
+        this.product_cost = product_cost;
+    }
 
     public Long getId() {
         return id;
@@ -49,18 +56,21 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Customer customer, Product product) {
+    public Order(Long id, Customer customer, Product product, Integer product_cost) {
         this.id = id;
         this.customer = customer;
         this.product = product;
+        this.product_cost = product_cost;
+    }
+
+    public Order(Customer customer, Product product, Integer product_cost) {
+        this.customer = customer;
+        this.product = product;
+        this.product_cost = product_cost;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", customer=" + customer.getName() +
-                ", product=" + product.getTitle() +
-                '}';
+        return String.format("{Order: id = %d, Customer = %s, Product = %s, productCost = %d}", id, customer.getName(), product.getTitle(), product_cost);
     }
 }

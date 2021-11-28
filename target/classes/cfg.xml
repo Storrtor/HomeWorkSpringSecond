@@ -14,8 +14,8 @@
         <property name="current_session_context_class">thread</property>
 <!--        <property name="hibernate.hbm2ddl.auto">create</property>-->
 
-        <mapping class="homework6.repository.customer.Customer"/>
-        <mapping class="homework6.repository.product.Product"/>
-        <mapping class="homework6.repository.order.Order"/>
+        <mapping class="homework6.model.Customer"/>
+        <mapping class="homework6.model.Product"/>
+        <mapping class="homework6.model.Order"/>
     </session-factory>
 </hibernate-configuration>

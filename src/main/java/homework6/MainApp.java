@@ -6,6 +6,9 @@ import homework6.repository.order.OrderDao;
 import homework6.repository.order.OrderDaoImpl;
 import homework6.repository.product.ProductDao;
 import homework6.repository.product.ProductDaoImp;
+import homework6.services.CustomerService;
+import homework6.services.OrderService;
+import homework6.services.ProductService;
 import homework6.utils.SessionFactoryUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,21 +16,23 @@ public class MainApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("homework6");
         SessionFactoryUtils sessionFactoryUtils = context.getBean(SessionFactoryUtils.class);
-        CustomerDao customerDao = context.getBean(CustomerDaoImpl.class);
-        OrderDao orderDao = context.getBean(OrderDaoImpl.class);
-        ProductDao productDao = context.getBean(ProductDaoImp.class);
+        CustomerService customerService = context.getBean(CustomerService.class);
+        OrderService orderService = context.getBean(OrderService.class);
+        ProductService productService = context.getBean(ProductService.class);
 
-        System.out.println("---------------");
-//        customerDao.getAllCustomersByProductId(2L);
-//        productDao.getProductsByCustomerId(1L);
+        try {
+            customerService.findCustomerByProductId(1L);
+            orderService.getOrders();
 
-        customerDao.getCustomers();
-        System.out.println("----");
-        orderDao.getOrders();
-        System.out.println("---");
-        productDao.getAllProducts();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (sessionFactoryUtils.getSession() != null) {
+                sessionFactoryUtils.getSession().close();
+            }
+            sessionFactoryUtils.shutdown();
+        }
 
     }
-
-
 }

@@ -1,6 +1,4 @@
-package homework6.repository.customer;
-
-import homework6.repository.order.Order;
+package homework6.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -47,12 +45,12 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", ordersCount=" + orders.size() +
-                '}';
+        return String.format("{Customer: id = %d, name = %s, ordersCount = %d}", id, name, orders.size());
     }
 }
