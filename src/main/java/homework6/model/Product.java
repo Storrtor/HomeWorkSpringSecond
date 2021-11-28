@@ -56,16 +56,6 @@ public class Product {
         this.orders = orders;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Product{" +
-//                "id=" + id +
-//                ", title='" + title + '\'' +
-//                ", cost=" + cost +
-//                ", ordersCount=" + orders.size() +
-//                '}';
-//    }
-
     @Override
     public String toString() {
         return String.format("{Product: id = %d, Title = %s, Cost = %d, ordersCount = %d}", id, title, cost, orders.size());
